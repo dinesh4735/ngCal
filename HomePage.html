@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<body >
+
+<div id="myDiv1" data-ng-controller="testCtrl" style="border:1px solid;padding :10px;background-color :wheat;">
+ 	<p>Name : <input type="text" data-ng-model="name"></p>
+ 	<h1>Hello {{name}}</h1>
+    <h1>Parameters</h1>
+    <div data-ng-init="firstname='john';lastname='doe'">
+        <input type ="text" placeholder="{{firstname+lastname}}" />
+         <h1 data-ng-bind="firstname +' '+lastname" />
+    </div>
+    <h1>Object</h1>
+    <div data-ng-init="person={firstname:'john',lastname:'doe'}">
+        <input type ="text" placeholder="{{person.firstname+'  '+person.lastname}}" />
+         <h1 data-ng-bind="person.firstname+'  '+person.lastname" />
+    </div>
+    <h1>Array</h1>
+    <div data-ng-init="nameparts=['john','doe']">
+        <input type ="text"  placeholder="{{nameparts[0]+'  '+nameparts[1]}}" />
+         <h1 data-ng-bind="nameparts[0]+'  '+nameparts[1]" />
+    </div>
+    <h1>Repeating HTML Elements</h1>
+    <div>
+        <input type ="text" ng-model ="fltr" />
+
+        <ol>
+            <li data-ng-repeat="item in people | filter:fltr | orderBy:'lastname'">
+               FirstName :  {{item.firstname|uppercase }}      {{1|currency}}
+            </li>
+        </ol>
+
+    </div>
+</div>
+<div id="myDiv3" data-ng-controller="myHttpCtrl">
+    <h1>ExternalData</h1>
+<table>
+  <tr ng-repeat="x in extData">
+    <td>{{ $index + 1 }}</td>
+    <td>{{ x.firstname }}</td>
+    <td>{{ x.lastname }}</td>
+    <td>{{ x.country }}</td>
+  </tr>
+</table>
+<ul>
+  <li ng-repeat="x in extData">
+    {{ x.firstname + ', ' + x.lastname }}
+  </li>
+</ul>
+
+</div>
+<div id="myDiv2" data-ng-controller="myCtrl">
+
+First Name: <input type="text" data-ng-model="firstName"><br>
+Last Name: <input type="text" data-ng-model="lastName"><br>
+<br>
+Full Name: {{firstName + " " + lastName}}
+
+</div>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/ajBootstrapper.js"></script>
+    <script src="scripts/ajModules.js"></script>
+    <script src="scripts/ajControllers.js"></script>
+</body>
+</html>
