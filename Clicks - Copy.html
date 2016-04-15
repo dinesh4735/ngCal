@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <script src="scripts/angular.min.js"></script>
+</head>
+<body>
+
+    <div id="clickSection1" ng-controller="clickSection1" style="border: 1px solid; padding: 10px; background-color: wheat;">
+
+        <button ng-click="count = count + 1">Click me!!!</button>
+
+        <p>{{ count }}</p>
+
+    </div>
+    <div id="clickSection2" ng-controller="clickSection2" style="border: 1px solid; padding: 10px; background-color: wheat;">
+
+        <button ng-click="toggle()">Toggle</button>
+
+
+        <p ng-show="myVar">
+            First Name:
+           <input type="text" ng-model="firstName">
+        </p>
+        <br>
+        <p ng-hide="myVar">
+            Last Name:
+           <input type="text" ng-model="lastName">
+        </p>
+        <br>
+        <br>
+        Full Name: {{firstName + " " + lastName}}
+       
+    </div>
+    <form name="clickSection3" id="clickSection3" ng-controller="clickSection3" style="border: 1px solid; padding: 10px; background-color: wheat;"novalidate>
+
+        <p>
+            First Name:<br>
+            <input type="text" name ="firstname" ng-model="user.firstname" required><br>
+            <span style="color: red" ng-show="clickSection3.firstname.$dirty && clickSection3.firstname.$invalid">
+                <span ng-show="clickSection3.firstname.$error.required">firstname is required.</span>
+            </span>
+        </p>
+        <p>
+            Last Name:<br>
+            <input type="text" name ="lastname" ng-model="user.lastname" required><br>
+            <span style="color: red" ng-show="clickSection3.lastname.$dirty && clickSection3.lastname.$invalid && clickSection3.lastname.$pristine">
+                <span ng-show="clickSection3.lastname.$error.required">lastname is required.</span>
+            </span>
+        </p>
+        <p>
+            Last Name:<br>
+            <input type="email" name="email" ng-model="user.email" required><br>
+            <span style="color: red" ng-show="clickSection3.email.$dirty && clickSection3.email.$invalid">
+                <span ng-show="clickSection3.email.$error.required">email is required.</span>
+                <span ng-show="clickSection3.email.$error.email">Invalid email address.</span>
+            </span>
+        </p>
+        <br>
+        <button ng-click="reset()">RESET</button>
+        <p>
+            <input type="submit"
+                ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+  myForm.email.$dirty && myForm.email.$invalid">
+        </p>
+        <p>form = {{user}}</p>
+        <p>master = {{master}}</p>
+
+    </form>
+
+    <script src="scripts/ajBootstrapper.js"></script>
+    <script src="scripts/ajModules.js"></script>
+    <script src="scripts/ajControllers.js"></script>
+</body>
+</html>
